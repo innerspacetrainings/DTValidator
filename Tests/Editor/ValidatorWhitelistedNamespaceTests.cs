@@ -68,7 +68,7 @@ namespace DTValidator.Internal
 			ValidatorIgnoredNamespaceProvider.SetCurrentProvider(IgnoredOutletComponentNamespaceProvider);
 			ValidatorBlacklistedClassProvider.SetCurrentProvider(() => new ValidatorBlacklistedClass[0]);
 
-			Debug.logger.logEnabled = false;
+			Debug.unityLogger.logEnabled = false;
 
 			GameObject gameObject = new GameObject();
 
@@ -78,7 +78,7 @@ namespace DTValidator.Internal
 			IList<IValidationError> errors = Validator.Validate(gameObject);
 			Assert.That(errors, Is.Not.Null);
 
-			Debug.logger.logEnabled = true;
+			Debug.unityLogger.logEnabled = true;
 			ValidatorWhitelistedNamespaceProvider.ClearCurrentProvider();
 			ValidatorIgnoredNamespaceProvider.ClearCurrentProvider();
 			ValidatorBlacklistedClassProvider.ClearCurrentProvider();
@@ -91,7 +91,7 @@ namespace DTValidator.Internal
 			ValidatorIgnoredNamespaceProvider.SetCurrentProvider(() => new ValidatorIgnoredNamespace[0]);
 			ValidatorBlacklistedClassProvider.SetCurrentProvider(BlacklistedOutletComponentClassProvider);
 
-			Debug.logger.logEnabled = false;
+			Debug.unityLogger.logEnabled = false;
 
 			GameObject gameObject = new GameObject();
 
@@ -101,7 +101,7 @@ namespace DTValidator.Internal
 			IList<IValidationError> errors = Validator.Validate(gameObject);
 			Assert.That(errors, Is.Not.Null);
 
-			Debug.logger.logEnabled = true;
+			Debug.unityLogger.logEnabled = true;
 			ValidatorWhitelistedNamespaceProvider.ClearCurrentProvider();
 			ValidatorIgnoredNamespaceProvider.ClearCurrentProvider();
 			ValidatorBlacklistedClassProvider.ClearCurrentProvider();
