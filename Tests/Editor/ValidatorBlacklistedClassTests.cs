@@ -1,41 +1,43 @@
 ﻿using System.Collections.Generic;
+using NUnit.Framework;
+using UnityEngine;
 
 public class BlacklistedOutletComponent : MonoBehaviour
 {
-    public GameObject Outlet;
+	public GameObject Outlet;
 }
 
 
 namespace DTValidator.Internal
 {
-    public static class ValidatorBlacklistedClassTests
-    {
-        private static IList<ValidatorBlacklistedClass> BlacklistedOutletComponentClassProvider()
-        {
-            var blacklistedClass = ScriptableObject.CreateInstance<ValidatorBlacklistedClass>();
-            blacklistedClass.Class = "BlacklistedOutletComponent";
+	public static class ValidatorBlacklistedClassTests
+	{
+		private static IList<ValidatorBlacklistedClass> BlacklistedOutletComponentClassProvider()
+		{
+			var blacklistedClass = ScriptableObject.CreateInstance<ValidatorBlacklistedClass>();
+			blacklistedClass.Class = "BlacklistedOutletComponent";
 
-            return new ValidatorBlacklistedClass[] { blacklistedClass };
-        }
+			return new ValidatorBlacklistedClass[] { blacklistedClass };
+		}
 
-        [Test]
-        public static void BlacklistedMissingOutlet_ReturnsNoErrors()
-        {
-            ValidatorBlacklistedClassProvider.SetCurrentProvider(BlacklistedOutletComponentClassProvider);
-            ValidatorIgnoredNamespaceProvider.SetCurrentProvider(() => new ValidatorIgnoredNamespace[0]);
-            ValidatorWhitelistedNamespaceProvider.SetCurrentProvider(() => new ValidatorWhitelistedNamespace[0]);
+		[Test]
+		public static void BlacklistedMissingOutlet_ReturnsNoErrors()
+		{
+			ValidatorBlacklistedClassProvider.SetCurrentProvider(BlacklistedOutletComponentClassProvider);
+			ValidatorIgnoredNamespaceProvider.SetCurrentProvider(() => new ValidatorIgnoredNamespace[0]);
+			ValidatorWhitelistedNamespaceProvider.SetCurrentProvider(() => new ValidatorWhitelistedNamespace[0]);
 
-            GameObject gameObject = new GameObject();
+			GameObject gameObject = new GameObject();
 
-            var outletComponent = gameObject.AddComponent<BlacklistedOutletComponent>();
-            outletComponent.Outlet = null;
+			var outletComponent = gameObject.AddComponent<BlacklistedOutletComponent>();
+			outletComponent.Outlet = null;
 
-            IList<IValidationError> errors = Validator.Validate(gameObject);
-            Assert.That(errors, Is.Null);
+			IList<IValidationError> errors = Validator.Validate(gameObject);
+			Assert.That(errors, Is.Null);
 
-            ValidatorBlacklistedClassProvider.ClearCurrentProvider();
-            ValidatorIgnoredNamespaceProvider.ClearCurrentProvider();
-            ValidatorWhitelistedNamespaceProvider.ClearCurrentProvider();
-        }
-    }
+			ValidatorBlacklistedClassProvider.ClearCurrentProvider();
+			ValidatorIgnoredNamespaceProvider.ClearCurrentProvider();
+			ValidatorWhitelistedNamespaceProvider.ClearCurrentProvider();
+		}
+	}
 }
