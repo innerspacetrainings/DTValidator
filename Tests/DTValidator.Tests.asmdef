@@ -1,0 +1,17 @@
+{
+    "name": "DTValidator.Tests",
+    "references": [
+        "GUID:9c83c44157816304dbf8faf242a6d84d"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
