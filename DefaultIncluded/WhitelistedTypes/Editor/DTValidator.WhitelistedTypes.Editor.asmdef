@@ -1,0 +1,17 @@
+{
+    "name": "DTValidator.WhitelistedTypes.Editor",
+    "references": [
+        "GUID:d08fde6209ee6784cb74bf6bbe01f829"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
