@@ -1,8 +1,8 @@
 {
     "name": "DTValidator.Tests.Editor",
     "references": [
-        "GUID:819ca399c681b3647afe626302a51640",
-        "GUID:d08fde6209ee6784cb74bf6bbe01f829"
+        "DTValidator.Editor",
+        "DTValidator"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
