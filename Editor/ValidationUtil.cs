@@ -154,7 +154,7 @@ namespace DTValidator
 
 
 		// PRAGMA MARK - Internal
-		private static IEnumerable<Scene> GetSavedScenes()
+		public static IEnumerable<Scene> GetSavedScenes()
 		{
 			string[] guids = AssetDatabase.FindAssets("t:Scene");
 			foreach (string guid in guids)
@@ -165,12 +165,12 @@ namespace DTValidator
 			}
 		}
 
-		private static bool IsSceneFromPackagesFolder(string path)
+		public static bool IsSceneFromPackagesFolder(string path)
 		{
 			return path.StartsWith("Packages");
 		}
 
-		private static IEnumerable<Scene> GetOpenScenes()
+		public static IEnumerable<Scene> GetOpenScenes()
 		{
 			string[] guids = EditorSceneManager.GetSceneManagerSetup().Select(scene => scene.path).ToArray();
 			foreach (string guid in guids)
@@ -179,7 +179,7 @@ namespace DTValidator
 			}
 		}
 
-		private static IEnumerable<Scene> GetBuildScenes()
+		public static IEnumerable<Scene> GetBuildScenes()
 		{
 			string[] guids = new string[SceneManager.sceneCountInBuildSettings];
 			for (int i = 0; i < guids.Count(); i++)
@@ -193,7 +193,7 @@ namespace DTValidator
 			}
 		}
 
-		private static IEnumerable<ScriptableObject> GetSavedScriptableObjects()
+		public static IEnumerable<ScriptableObject> GetSavedScriptableObjects()
 		{
 			string[] guids = AssetDatabase.FindAssets("t:ScriptableObject");
 			foreach (string guid in guids)
@@ -203,7 +203,7 @@ namespace DTValidator
 			}
 		}
 
-		private static IList<IValidationError> RestoreScenesAfterValidationCallback(Func<IList<IValidationError>> validationCallback)
+		public static IList<T> RestoreScenesAfterValidationCallback<T>(Func<IList<T>> validationCallback)
 		{
 			string oldActiveScenePath = EditorSceneManager.GetActiveScene().path;
 			string[] oldScenePaths = new string[EditorSceneManager.sceneCount];
@@ -212,7 +212,7 @@ namespace DTValidator
 				oldScenePaths[i] = EditorSceneManager.GetSceneAt(i).path;
 			}
 
-			IList<IValidationError> validationErrors = validationCallback.Invoke();
+			IList<T> validationErrors = validationCallback.Invoke();
 
 			bool first = true;
 			foreach (string scenePath in oldScenePaths)
