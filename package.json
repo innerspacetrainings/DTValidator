@@ -1,6 +1,6 @@
 {
     "name": "at.innerspace.dtvalidator",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "displayName": "DT Validator",
     "description": "Tool for validating objects (eg. GameObjects, ScriptableObjects, etc) in the Unity Editor.",
     "unity": "2018.3",
@@ -16,21 +16,5 @@
       "type": "git",
       "url": "ssh://git@github.com:innerspacetrainings/DTValidator.git"
     },
-    "license": "MIT",
-    "files": [
-        "*.md",
-        "*.meta",
-        "*.asmdef",
-        "*.xml",
-        "*.cs",
-        "Tests",
-        "LICENSE",
-        "Validation",
-        "Core",
-        "DefaultIncluded",
-        "Editor",
-        "Icons",
-        "Tests",
-        "Validation"
-      ]
+    "license": "MIT"
 }
