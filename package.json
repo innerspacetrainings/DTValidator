@@ -1,6 +1,6 @@
 {
     "name": "at.innerspace.dtvalidator",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "displayName": "DT Validator",
     "description": "Tool for validating objects (eg. GameObjects, ScriptableObjects, etc) in the Unity Editor.",
     "unity": "2018.3",
